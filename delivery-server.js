@@ -36,7 +36,7 @@ app.post('/deliveryCart/:guid', jsonParser, async function (req, res) {
     postAsyncLog(`Cart Results to be Delivered fetched: ${cartDetailsRows}`)
 
     cartDetailsRows.forEach(async element => {
-        const queryString = `INSERT INTO delivery (guid, items, quantity, stateOfDelivery) VALUES (${element.guid}, '${element.items}',
+        const queryString = `INSERT INTO delivery (guid, item, quantity, deliveryState) VALUES (${element.guid}, '${element.items}',
         ${element.quantity}, 'deliverying')`;
 
         await promisePool.query(queryString)
