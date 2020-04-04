@@ -36,7 +36,7 @@ app.post('/deliveryCart/:guid', jsonParser, async function (req, res) {
     postAsyncLog(`Cart Results to be Delivered fetched: ${cartDetailsRows}`)
 
     cartDetailsRows.forEach(async element => {
-        const queryString = `INSERT INTO delivery (guid, item, quantity, deliveryState) VALUES (${element.guid}, '${element.items}',
+        const queryString = `INSERT INTO delivery (guid, item, quantity, deliveryState) VALUES (${element.guid}, '${element.item}',
         ${element.quantity}, 'deliverying')`;
 
         await promisePool.query(queryString)
@@ -45,7 +45,7 @@ app.post('/deliveryCart/:guid', jsonParser, async function (req, res) {
 
     await promisePool.query(`DELETE FROM cart WHERE guid = '${req.params.guid}'`)
 
-    postAsyncLog(`Emptyed the cart and delivered the items for cart guid: ${req.params.guid}`)
+    postAsyncLog(`Emptyed the cart and delivered the item for cart guid: ${req.params.guid}`)
 
     res.send("")
 })
