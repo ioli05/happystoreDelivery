@@ -1,7 +1,7 @@
 // Libraries
 const express = require('express')
 var bodyParser = require('body-parser')
-var mysql = require('mysql');
+var mysql = require('mysql2');
 const axios = require("axios");
 
 // Server prop
